@@ -1,0 +1,37 @@
+.fondo_principal{
+    background-image: url('../../../assets/fondo/tenis.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.usuario{
+    width: 80px;
+    height:auto;
+
+}
+
+.vacio{
+    height: 70vh;
+    width: 100%;
+}
+.apartado {
+    padding: 50px 20px;
+    background: rgba(186, 219, 230, 0.8); /* Fondo semitransparente para mejorar la legibilidad */
+    margin-bottom: 20px;
+    border: 2px solid #e4dddd;
+    box-shadow: 0 0 10px rgba(189, 185, 185, 0.7);
+}
+.container-scroll {
+    overflow-y: auto; /* Permite el scroll interno */
+    height: 100vh; /* Asegura que ocupa toda la altura del viewport */
+
+}
+.container-scroll::-webkit-scrollbar {
+    display: none;
+}

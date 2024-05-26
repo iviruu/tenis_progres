@@ -1,0 +1,21 @@
+.logo{
+    width: 400px;
+    height: auto;
+}
+.fondo{
+    background-image: url('../../../assets/fondo/prof_alumno.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.auth{
+    background-color: #bcb4b470;
+    border: 2px solid #e4dddd;
+    box-shadow: 0 0 10px rgba(189, 185, 185, 0.7);
+
+}

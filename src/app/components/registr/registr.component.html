@@ -1,1 +1,32 @@
-<p>registr works!</p>
+<div class="container-fluid fondo">
+    <div class="row justify-content-cente">
+        <div class="col-12 text-center">
+            <img class="logo" src="../../../assets/logo/logotenis.png" alt="">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+        <div class="col-11 col-md-6 col-lg-4 text-center auth">
+            <div class="row ">
+                <div class="col-10 offset-1">
+                    <label class="form-label my-4 "><p class="h4 text-primary-emphasis">If you're not registered,<a routerLink="/register">click here</a>!</p></label>
+                </div>
+                <div class="col-1">
+                    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="h3 text-info" >X</span>
+                </div>
+            </div>   
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <button class="btn btn-primary mb-3"> Login</button>
+        </div>
+    </div>
+
+  </div>
+  
+
