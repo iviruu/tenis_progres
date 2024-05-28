@@ -1,5 +1,5 @@
 .fondo_principal{
-    background-image: url('../../../assets/fondo/tenis.webp');
+    background-image: url('../../../assets/fondo/entrenamiento.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,8 +11,8 @@
 }
 
 .img-fluid{
-    width: 50%;
-    height: auto;
+    width: 70%;
+    height:auto;
 
 }
 .usuario{
@@ -22,13 +22,20 @@
 }
 
 .vacio{
-    height: 70vh;
+    height: 10vh;
     width: 100%;
+}
+.vacio2{
+    height: 40vh;
+    width: 100%;
+}
+.text-titulo{
+    color: #fffefe;
+
 }
 .apartado {
     padding: 50px 20px;
-    background: rgba(186, 219, 230, 0.8); /* Fondo semitransparente para mejorar la legibilidad */
-    margin-bottom: 20px;
+    background: rgb(99, 124, 132); /* Fondo semitransparente para mejorar la legibilidad */
     border: 2px solid #e4dddd;
     box-shadow: 0 0 10px rgba(189, 185, 185, 0.7);
 }
@@ -41,8 +48,6 @@
     background-color: #f8f9fa;
     border: 1px solid #e4dddd;
     border-radius: 5px;
-
-
 }
 .container-scroll::-webkit-scrollbar {
     display: none;
@@ -72,4 +77,14 @@
 }
 .masthead-content .masthead-subheading {
   font-size: 2rem;
+}
+@media (max-width: 992px) {
+ .info{
+    text-align: center;
+ }
+}
+@media (min-width: 992px) {
+  .texto-final{
+    text-align: end;
+  }
 }
