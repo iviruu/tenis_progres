@@ -1,12 +1,18 @@
 <div class="container-fluid fondo_principal"> 
 
-    <div class="container-scroll container-xl">
-        <div class="row mt-4 justify-content-end me-3">
-            <div class="col-3 col-md-1 ">
-                <img class="usuario" [routerLink]="['/login']" routerLinkActive="router-link-active"  src="../../../assets/logo/Untitled design-AnyEraser.png" alt="logo usuario">
+    <div class="container-scroll">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#page-top">Tennis Progress</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="registr">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login">Log In</a></li>
+                    </ul>
+                </div>
             </div>
-
-        </div>
+        </nav>
     <div class="vacio">
 
     </div>
@@ -36,9 +42,12 @@
             </div>
     </div>
     <div class="row apartado">
-        <div class="col-md-12">
-            <h2 class="text-center text-info">Noticias</h2>
-            <p class="text-center">Explica la funcionalidad principal de la página aquí.</p>
+        <div class="col-5">
+            <h2 class=" text-info">Noticias</h2>
+            <p >Explica la funcionalidad principal de la página aquí.</p>
+        </div>
+        <div class="col-5">
+            <img class="img-fluid rounded-circle" src="../../../assets/fondo/01.jpg" alt="">
         </div>
     </div>
     
@@ -61,7 +70,5 @@
             <p class="text-center"><a href="https://www.linkedin.com/in/eduardo-ortiz-olivares-7b0b0b1a" target="_blank" style="color: white;">Eduardo Ortiz Olivares</a></p>
         </div>
     </div>
-    
-
-
+</div>
 </div>

@@ -1,47 +1,15 @@
-.fondo_principal{
-    background-image: url('../../../assets/fondo/tenis.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-}
-
-.usuario{
-    width: 80px;
-    height:auto;
-
-}
-
-.vacio{
-    height: 70vh;
-    width: 100%;
-}
-.apartado {
-    padding: 50px 20px;
-    background: rgba(186, 219, 230, 0.8); /* Fondo semitransparente para mejorar la legibilidad */
-    margin-bottom: 20px;
-    border: 2px solid #e4dddd;
-    box-shadow: 0 0 10px rgba(189, 185, 185, 0.7);
-}
-.container-scroll {
-    overflow-y: auto; /* Permite el scroll interno */
-    height: 100vh; /* Asegura que ocupa toda la altura del viewport */
-
-}
-.container-scroll::-webkit-scrollbar {
-    display: none;
-}
-
-
-.footer2{
-    left: 0;
-    right: 0;
-    width: 100%;
-}
+@charset "UTF-8";
+/*!
+* Start Bootstrap - One Page Wonder v6.0.6 (https://startbootstrap.com/theme/one-page-wonder)
+* Copyright 2013-2023 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-one-page-wonder/blob/master/LICENSE)
+*/
+/*!
+ * Bootstrap  v5.2.3 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
