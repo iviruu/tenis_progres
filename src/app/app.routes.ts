@@ -6,6 +6,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { RegistrComponent } from './components/registr/registr.component';
 import { PerfilComponent } from './shared/perfil/perfil.component';
 import { ListaAlumnosComponent } from './components/profe/lista-alumnos/lista-alumnos.component';
+import { FormularioComponent } from './components/profe/formulario/formulario.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
         { path: '', redirectTo: 'perfil', pathMatch: 'full' },
         { path: 'perfil', component: PerfilComponent },
         { path: 'lista_alumnos', component: ListaAlumnosComponent },
+        { path: 'resultados', component: FormularioComponent},
     ]},
     {path: 'alumno', component: AlumnoComponent},
     {path: 'login', component: AuthComponent},

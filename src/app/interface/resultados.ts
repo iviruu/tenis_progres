@@ -1,10 +1,10 @@
 export interface Resultados {
     code:    number;
     message: string;
-    data:    Datum[];
+    data:    DatumResultados[];
 }
 
-export interface Datum {
+export interface DatumResultados {
     id:         number;
     user_id:    number;
     saque_id:   number;

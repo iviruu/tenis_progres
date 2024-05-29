@@ -1,10 +1,10 @@
 export interface Saque {
     code:    number;
     message: string;
-    data:    Datum[];
+    data:    DatumSaque[];
 }
 
-export interface Datum {
+export interface DatumSaque {
     id_saque:   number;
     type_saque: string;
 }

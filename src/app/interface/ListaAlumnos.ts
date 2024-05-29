@@ -1,10 +1,10 @@
 export interface ListaAlumnos {
     code:    number;
     message: string;
-    data:    Datum[];
+    data:    DatumListaAlumnos[];
 }
 
-export interface Datum {
+export interface DatumListaAlumnos {
     alumno_id:       number;
     teacher_id:      number;
     estado_relacion: number;

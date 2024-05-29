@@ -1,29 +1,37 @@
 <div class="container mt-3">
-    <div class="row mb-3">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchText">
-      </div>
+  <div class="row mb-3">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchText">
     </div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th (click)="sortTable('name')">Nombre</th>
-          <th (click)="sortTable('surname')">Apellido</th>
-          <th (click)="sortTable('email')">Email</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of filteredUsers()">
-          <td>{{ user.name }}</td>
-          <td>{{ user.surname }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <button class="btn btn-primary btn-sm" (click)="modifyUser(user)">Modificar</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteUser(user)">Borrar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th (click)="sortTable('name')">
+          Nombre 
+          <i *ngIf="sortKey === 'name'" class="bi" [ngClass]="{'bi-caret-up-fill': sortDirection, 'bi-caret-down-fill': !sortDirection}"></i>
+        </th>
+        <th (click)="sortTable('surname')">
+          Apellido 
+          <i *ngIf="sortKey === 'surname'" class="bi" [ngClass]="{'bi-caret-up-fill': sortDirection, 'bi-caret-down-fill': !sortDirection}"></i>
+        </th>
+        <th (click)="sortTable('email')">
+          Email 
+          <i *ngIf="sortKey === 'email'" class="bi" [ngClass]="{'bi-caret-up-fill': sortDirection, 'bi-caret-down-fill': !sortDirection}"></i>
+        </th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredUsers()">
+        <td>{{ user.name }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="modifyUser(user)">Modificar</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteUser(user)">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
