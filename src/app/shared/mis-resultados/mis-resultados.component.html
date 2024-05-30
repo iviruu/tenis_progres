@@ -1,0 +1,20 @@
+<div class="container mt-3">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="mb-3">
+        <label for="saque" class="form-label">Buscar por Saque</label>
+        <select id="saque" class="form-select" [(ngModel)]="selectedSaque_id" name="saque_id" required (change)="filterResultados()">
+          <option *ngFor="let saque of saques" [value]="saque.id_saque">{{ saque.type_saque }}</option>
+        </select>
+      </div>
+  
+      <div *ngIf="filteredResultados.length > 0">
+        <h5>Resultados:</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let resultado of filteredResultados">
+            {{ resultado.velocidad }} {{resultado.punteria}}
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  

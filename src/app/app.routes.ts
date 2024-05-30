@@ -7,6 +7,7 @@ import { RegistrComponent } from './components/registr/registr.component';
 import { PerfilComponent } from './shared/perfil/perfil.component';
 import { ListaAlumnosComponent } from './components/profe/lista-alumnos/lista-alumnos.component';
 import { FormularioComponent } from './components/profe/formulario/formulario.component';
+import { MisResultadosComponent } from './shared/mis-resultados/mis-resultados.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -16,7 +17,12 @@ export const routes: Routes = [
         { path: 'lista_alumnos', component: ListaAlumnosComponent },
         { path: 'resultados', component: FormularioComponent},
     ]},
-    {path: 'alumno', component: AlumnoComponent},
+    {path: 'alumno', component: AlumnoComponent, children:[
+        { path: '', redirectTo: 'perfil', pathMatch: 'full' },
+        { path: 'perfil', component: PerfilComponent },
+        { path: 'mis_resultados', component: MisResultadosComponent},
+    
+    ]},
     {path: 'login', component: AuthComponent},
     {path: 'register', component: RegistrComponent},
     
