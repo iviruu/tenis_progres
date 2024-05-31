@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
 import { Saque } from '../interface/saque';
-import { Resultados } from '../interface/resultados';
+import { DatumResultados, Resultados } from '../interface/resultados';
 import { ListaAlumnos } from '../interface/ListaAlumnos';
 
 
@@ -53,8 +53,8 @@ export class UserService {
     });
   }
 
-  createResultados(user_id:number, saque_id:number, velocidad:string, punteria:string):Observable<Resultados>{
-    return this.http.post<Resultados>(this.myAppUrl + this.myApiUrl + '/create', {user_id, saque_id, velocidad, punteria}, {
+  createResultados(resultados: Omit<DatumResultados, 'id' | 'created_at' | 'updated_at'>):Observable<DatumResultados>{
+    return this.http.post<DatumResultados>(this.myAppUrl + this.myApiUrl + '/create', resultados, {
       withCredentials: true // Asegura que las cookies se envíen con la solicitud
     });
   }

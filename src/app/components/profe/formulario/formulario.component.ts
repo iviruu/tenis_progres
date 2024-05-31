@@ -86,10 +86,10 @@ export class FormularioComponent implements OnInit{
   onSubmit() {
     // Validación para asegurarse de que los valores no sean null o undefined antes de enviar
     if (
-      this.formData.velocidad === null || this.formData.velocidad === undefined ||
-      this.formData.punteria === null || this.formData.punteria === undefined ||
-      this.formData.user_id === null || this.formData.user_id === undefined ||
-      this.formData.saque_id === null || this.formData.saque_id === undefined 
+      this.formData.velocidad === undefined ||
+      this.formData.punteria === undefined ||
+      this.formData.user_id === undefined ||
+      this.formData.saque_id === undefined 
     ) {
       console.error('Todos los campos son obligatorios y deben ser números válidos.');
       return;
@@ -97,10 +97,19 @@ export class FormularioComponent implements OnInit{
 
     const resultData: Omit<DatumResultados, 'id' | 'created_at' | 'updated_at'> = {
       user_id: this.formData.user_id!,
-      saque_id: this.formData.saque_id!,
+      saque_id: Number( this.formData.saque_id!),
       velocidad: this.formData.velocidad!,
-      punteria: this.formData.punteria!,
+      punteria: this.formData.punteria!
     };
+
+    this.userService.createResultados(resultData).subscribe({
+      next: data => {
+        console.log('Resultados creados:', data);
+      },
+      error: error => {
+        console.error('Error al crear los resultados:', error);
+      }
+    });
 
     console.log('Formulario enviado:', resultData);
     // Lógica para manejar el envío del formulario
