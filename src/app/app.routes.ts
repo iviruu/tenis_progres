@@ -25,5 +25,6 @@ export const routes: Routes = [
     ]},
     {path: 'login', component: AuthComponent},
     {path: 'register', component: RegistrComponent},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
     
 ];

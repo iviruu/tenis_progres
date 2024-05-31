@@ -1,20 +1,31 @@
 <div class="container mt-3">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <form #form="ngForm">
       <div class="mb-3">
         <label for="saque" class="form-label">Buscar por Saque</label>
         <select id="saque" class="form-select" [(ngModel)]="selectedSaque_id" name="saque_id" required (change)="filterResultados()">
           <option *ngFor="let saque of saques" [value]="saque.id_saque">{{ saque.type_saque }}</option>
         </select>
       </div>
-  
+      
       <div *ngIf="filteredResultados.length > 0">
         <h5>Resultados:</h5>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let resultado of filteredResultados">
-            {{ resultado.velocidad }} {{resultado.punteria}}
+        <ul class="list-group" *ngFor="let resultado of filteredResultados">
+          <li class="list-group-item" >
+            Velocidad: {{ resultado.velocidad }}, Puntería: {{ resultado.punteria }}, Fecha: {{ resultado.created_at | date:'shortDate' }}
           </li>
         </ul>
+        <button class="btn btn-primary btn-sm float-end" (click)="openModal()">Ver Gráfico</button>
+      </div>
+      <div class="mb-3 d-flex gap-3">
+        <label class="form-label">Tipo de Gráfico:</label>
+        <div>
+          <input type="radio" id="bar" name="chartType" value="bar" [(ngModel)]="selectedChartType" checked> Barras
+        </div>
+        <div>
+          <input type="radio" id="line" name="chartType" value="line" [(ngModel)]="selectedChartType"> Líneas
+        </div>
       </div>
     </form>
+    <app-chards [resultados]="modalResultados" [chartType]="selectedChartType" ></app-chards>
   </div>
   
