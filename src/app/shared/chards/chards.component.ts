@@ -105,7 +105,7 @@ export class ChardsComponent implements OnChanges {
     }
   }
 transformData() {
-  const labels = this.resultados.map(result => result.created_at.toISOString().split('T')[0]);
+  const labels = this.resultados.map(result => new Date(result.created_at).toISOString().split('T')[0]);
   const velocidades = this.resultados.map(result => Number(result.velocidad));
   const punterias = this.resultados.map(result => Number(result.punteria));
 

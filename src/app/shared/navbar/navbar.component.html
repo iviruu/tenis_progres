@@ -42,7 +42,7 @@
                         <span class="d-none d-sm-inline mx-1">Nombre</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" href="#">Desconectar</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/home']" (click)="logout()">Desconectar</a></li>
                     </ul>
                 </div>
             </div>

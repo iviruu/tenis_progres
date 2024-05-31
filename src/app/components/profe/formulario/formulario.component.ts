@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Data } from '@angular/router';
 import { DatumSaque } from '../../../interface/saque';
+import { DatumListaAlumnos } from '../../../interface/ListaAlumnos';
+import { UserService } from '../../../services/user.service';
+import { DatumResultados } from '../../../interface/resultados';
+
 
 @Component({
   selector: 'app-formulario',
@@ -11,49 +15,94 @@ import { DatumSaque } from '../../../interface/saque';
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit{
 
   searchText: string = '';
-  filteredAlumnos: Data[] = [];
+  filteredAlumnos: DatumListaAlumnos[] = [];
 
-  users: Data[] = [
-    { name: 'John', surname: 'Doe', email: 'john.doe@example.com', roles: 1, created_at: new Date(), updated_at: new Date(), id_user: 1, photo: null },
-    { name: 'Jane', surname: 'Doe', email: 'jane.doe@example.com', roles: 2, created_at: new Date(), updated_at: new Date(), id_user: 2, photo: null},
-    // Agrega más usuarios aquí
-  ];
+  users: DatumListaAlumnos[] = [];
+  user?:Data;
+  saques: DatumSaque[] = [];
 
-  saques: DatumSaque[] = [
-    { id_saque: 1, type_saque: 'Saque de potencia' },
-    { id_saque: 2, type_saque: 'Saque de precisión' },
-    // Agrega más tipos de saques aquí
-  ];
-
-  formData = {
-    user_id: null,
-    saque_id: null,
-    velocidad: null,
-    punteria: null
+  formData:  Partial<Omit<DatumResultados, 'id' | 'created_at' | 'updated_at'>> = {
+    user_id: undefined,
+    saque_id: undefined,
+    velocidad: undefined,
+    punteria: undefined,
   };
 
-  filterAlumnos() {
-    if (this.searchText) {
-      const searchTerm = this.searchText.toLowerCase();
-      this.filteredAlumnos = this.users.filter(alumno =>
-        alumno['name'].toLowerCase().includes(searchTerm) || alumno['surname'].toLowerCase().includes(searchTerm)
-      );
-    } else {
-      this.filteredAlumnos = [];
-    }
+  constructor(
+    private userService: UserService,
+  ) { }
+
+  ngOnInit(): void {
+    this.userService.getUser().subscribe({
+      next: data => {
+        this.user = data.data;
+        console.log('Usuario:', this.user);
+
+        if (this.user) {
+          this.userService.getAlumnosByProfesor(this.user['id_user']).subscribe({
+            next: data => {
+              this.users = data.data;
+              console.log('Alumnos:', this.users);
+            },
+            error: error => {
+              console.error('Error al obtener los alumnos:', error);
+            }
+          });
+        }
+      },
+      error: error => {
+        console.error('Error al obtener el usuario:', error);
+      }
+    });
+    this.userService.getListaSaques().subscribe({
+      next: data => {
+        this.saques = data.data;
+        console.log('Saques:', this.saques);
+      },
+      error: error => {
+        console.error('Error al obtener los saques:', error);
+      }
+    });
   }
 
-  selectAlumno(alumno: Data) {
-    this.formData.user_id = alumno['id_user'];
-    this.searchText = `${alumno['name']} ${alumno['surname']}`;
+  filterAlumnos() {
+    const searchTerm = this.searchText.toLowerCase();
+    this.filteredAlumnos = this.users.filter(alumno => {
+      const name = alumno.Alumno.name ? alumno.Alumno.name.toLowerCase() : '';
+      const surname = alumno.Alumno.surname ? alumno.Alumno.surname.toLowerCase() : '';
+      return name.includes(searchTerm) || surname.includes(searchTerm);
+    });
+  }
+
+  selectAlumno(alumno: DatumListaAlumnos) {
+    this.formData.user_id = alumno.alumno_id;
+    this.searchText = `${alumno.Alumno.name} ${alumno.Alumno.surname}`;
     this.filteredAlumnos = [];
   }
 
   onSubmit() {
-    console.log('Formulario enviado:', this.formData);
+    // Validación para asegurarse de que los valores no sean null o undefined antes de enviar
+    if (
+      this.formData.velocidad === null || this.formData.velocidad === undefined ||
+      this.formData.punteria === null || this.formData.punteria === undefined ||
+      this.formData.user_id === null || this.formData.user_id === undefined ||
+      this.formData.saque_id === null || this.formData.saque_id === undefined 
+    ) {
+      console.error('Todos los campos son obligatorios y deben ser números válidos.');
+      return;
+    }
+
+    const resultData: Omit<DatumResultados, 'id' | 'created_at' | 'updated_at'> = {
+      user_id: this.formData.user_id!,
+      saque_id: this.formData.saque_id!,
+      velocidad: this.formData.velocidad!,
+      punteria: this.formData.punteria!,
+    };
+
+    console.log('Formulario enviado:', resultData);
     // Lógica para manejar el envío del formulario
   }
 

@@ -5,7 +5,7 @@
       <input type="text" class="form-control" id="alumno" [(ngModel)]="searchText" name="alumno" (input)="filterAlumnos()" autocomplete="off">
       <div *ngIf="searchText && filteredAlumnos.length > 0" class="dropdown-menu show w-100" >
         <button class="dropdown-item" *ngFor="let alumno of filteredAlumnos" (click)="selectAlumno(alumno)">
-          {{ alumno['name'] }} {{ alumno['surname'] }}
+          {{ alumno['Alumno'].name }} {{ alumno['Alumno'].surname }}
         </button>
       </div>
     </div>

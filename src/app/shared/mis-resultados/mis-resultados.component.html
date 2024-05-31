@@ -3,7 +3,7 @@
       <div class="mb-3">
         <label for="saque" class="form-label">Buscar por Saque</label>
         <select id="saque" class="form-select" [(ngModel)]="selectedSaque_id" name="saque_id" required (change)="filterResultados()">
-          <option *ngFor="let saque of saques" [value]="saque.id_saque">{{ saque.type_saque }}</option>
+          <option *ngFor="let saque of saques" [value]="saque.id_saque" >{{ saque.type_saque }}</option>
         </select>
       </div>
       

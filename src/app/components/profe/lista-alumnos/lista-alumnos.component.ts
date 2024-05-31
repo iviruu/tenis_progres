@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Data } from '../../../interface/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../../services/user.service';
+import { Alumno, DatumListaAlumnos } from '../../../interface/ListaAlumnos';
 
+type SortableKeys = 'name' | 'surname';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -11,47 +14,76 @@ import { CommonModule } from '@angular/common';
   templateUrl: './lista-alumnos.component.html',
   styleUrl: './lista-alumnos.component.css'
 })
-export class ListaAlumnosComponent {
-  users: Data[] = [
-    { name: 'John', surname: 'Doe', email: 'john.doe@example.com', roles: 1, created_at: new Date(), updated_at: new Date(), id_user: 1, photo: null },
-    { name: 'Jane', surname: 'Doe', email: 'jane.doe@example.com', roles: 2, created_at: new Date(), updated_at: new Date(), id_user: 2, photo: null},
-    // Agrega más usuarios aquí
-  ];
+export class ListaAlumnosComponent implements OnInit{
+  users: DatumListaAlumnos[] = [];
+  user?:Data;
 
   searchText: string = '';
-  sortKey: keyof Data | ''= '';
+  sortKey: SortableKeys = 'name';
   sortDirection: boolean = true; // true para ascendente, false para descendente
 
+
+  constructor(
+    private userService: UserService,
+  ) { }
+
+  ngOnInit(): void {
+    this.userService.getUser().subscribe({
+      next: data => {
+        this.user = data.data;
+        console.log('Usuario:', this.user);
+
+        if (this.user) {
+          this.userService.getAlumnosByProfesor(this.user.id_user).subscribe({
+            next: data => {
+              this.users = data.data;
+              console.log('Alumnos:', this.users);
+            },
+            error: error => {
+              console.error('Error al obtener los alumnos:', error);
+            }
+          });
+        }
+      },
+      error: error => {
+        console.error('Error al obtener el usuario:', error);
+      }
+    });
+  }
+
+
   filteredUsers() {
-    let filtered = this.users.filter(user =>
-      user.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      user.surname.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      user.email.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+    if (!this.users) {
+      return [];
+    }
+    let filtered = this.users.filter(user => {
+      const name = user.Alumno.name ? user.Alumno.name.toLowerCase() : '';
+      const surname = user.Alumno.surname ? user.Alumno.surname.toLowerCase() : '';
+  
+      return name.includes(this.searchText.toLowerCase()) || surname.includes(this.searchText.toLowerCase());
+    });
 
     return filtered.sort((a, b) => {
       if (this.sortKey) {
-        let aValue = a[this.sortKey];
-        let bValue = b[this.sortKey];
+        const aValue = a.Alumno[this.sortKey as keyof Alumno];
+        const bValue = b.Alumno[this.sortKey as keyof Alumno];
 
         if (aValue === null || aValue === undefined) return this.sortDirection ? -1 : 1;
         if (bValue === null || bValue === undefined) return this.sortDirection ? 1 : -1;
 
         if (typeof aValue === 'string' && typeof bValue === 'string') {
-          aValue = aValue.toLowerCase();
-          bValue = bValue.toLowerCase();
+          if (aValue.toLowerCase() < bValue.toLowerCase()) return this.sortDirection ? -1 : 1;
+          if (aValue.toLowerCase() > bValue.toLowerCase()) return this.sortDirection ? 1 : -1;
+        } else {
+          if (aValue < bValue) return this.sortDirection ? -1 : 1;
+          if (aValue > bValue) return this.sortDirection ? 1 : -1;
         }
-
-        if (aValue < bValue) return this.sortDirection ? -1 : 1;
-        if (aValue > bValue) return this.sortDirection ? 1 : -1;
-        return 0;
       }
-
       return 0;
     });
   }
 
-  sortTable(key: keyof Data) {
+  sortTable(key: SortableKeys) {
     if (this.sortKey === key) {
       this.sortDirection = !this.sortDirection;
     } else {
@@ -60,12 +92,12 @@ export class ListaAlumnosComponent {
     }
   }
 
-  modifyUser(user: Data) {
+  modifyUser(user: DatumListaAlumnos) {
     // Lógica para modificar usuario
     console.log('Modificar usuario:', user);
   }
 
-  deleteUser(user: Data) {
+  deleteUser(user: DatumListaAlumnos) {
     // Lógica para borrar usuario
     this.users = this.users.filter(u => u !== user);
   }

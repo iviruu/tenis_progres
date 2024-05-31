@@ -46,6 +46,8 @@ export class AuthService {
   }
 
   logout(){
-    return this.http.get(this.myAppUrl + this.myApiUrl + '/logout');
-  }
+    return this.http.get(this.myAppUrl + this.myApiUrl + '/logout', {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud);
+  });
+}
 }
