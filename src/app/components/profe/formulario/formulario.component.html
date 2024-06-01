@@ -1,32 +1,34 @@
 <div class="container mt-3">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
-      <div class="mb-3">
+    <form class="row" (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class=" col-9 mb-3">
         <label for="alumno" class="form-label">Alumno</label>
-      <input type="text" class="form-control" id="alumno" [(ngModel)]="searchText" name="alumno" (input)="filterAlumnos()" autocomplete="off">
-      <div *ngIf="searchText && filteredAlumnos.length > 0" class="dropdown-menu show w-100" >
+      <input type="text" class="form-control" id="alumno" [(ngModel)]="searchText" name="alumno" (input)="filterAlumnos()" (focus)="showAllAlumnos()" 
+      (blur)="hideAlumnos()" autocomplete="off">
+      <div *ngIf="showDropdown" class="dropdown-menu show w-auto" >
         <button class="dropdown-item" *ngFor="let alumno of filteredAlumnos" (click)="selectAlumno(alumno)">
           {{ alumno['Alumno'].name }} {{ alumno['Alumno'].surname }}
         </button>
       </div>
     </div>
   
-      <div class="mb-3">
+      <div class="col-9 mb-3">
         <label for="saque" class="form-label">Saque</label>
         <select id="saque" class="form-select" [(ngModel)]="formData.saque_id" name="saque_id" required>
-          <option *ngFor="let saque of saques" [value]="saque.id_saque">{{ saque.type_saque }}</option>
+          <option *ngFor="let saque of saques" [value]="saque.id_saque" class="w-auto">{{ saque.type_saque }}</option>
         </select>
       </div>
-      <div class="mb-3">
+      <div class="col-9 mb-3">
         <label for="velocidad" class="form-label">Velocidad</label>
         <input type="number" id="velocidad" class="form-control" [(ngModel)]="formData.velocidad" name="velocidad" required>
       </div>
   
-      <div class="mb-3">
+      <div class="col-9 mb-3">
         <label for="punteria" class="form-label">Puntería</label>
         <input type="number" id="punteria" class="form-control" [(ngModel)]="formData.punteria" name="punteria" required>
       </div>
-  
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <div class="col-9">
+      <button  type="submit" class="btn btn-primary">Enviar</button>
+    </div>
     </form>
   </div>
   

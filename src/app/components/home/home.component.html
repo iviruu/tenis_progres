@@ -7,8 +7,18 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
+                        @if (roles == null) {
                         <li class="nav-item"><a class="nav-link" href="register">Sign Up</a></li>
                         <li class="nav-item"><a class="nav-link" href="login">Log In</a></li>
+                    }
+                    @if (roles == '2'){
+                    <li class="nav-item"><a class="nav-link" routerLink="/profe">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout">Log Out</a></li>
+                    }
+                    @if (roles == '1'){
+                    <li class="nav-item"><a class="nav-link" routerLink="/alumno">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout">Log Out</a></li>
+                    }
                     </ul>
                 </div>
             </div>

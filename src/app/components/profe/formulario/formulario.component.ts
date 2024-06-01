@@ -19,7 +19,7 @@ export class FormularioComponent implements OnInit{
 
   searchText: string = '';
   filteredAlumnos: DatumListaAlumnos[] = [];
-
+  showDropdown: boolean = false;
   users: DatumListaAlumnos[] = [];
   user?:Data;
   saques: DatumSaque[] = [];
@@ -68,6 +68,19 @@ export class FormularioComponent implements OnInit{
     });
   }
 
+  showAllAlumnos() {
+    console.log('los alumnos', this.users)
+    this.filteredAlumnos = this.users; // Mostrar todos los alumnos al enfocar
+    this.showDropdown = true; // Mostrar el dropdown
+  }
+
+  hideAlumnos() {
+    // Utiliza un pequeño retraso para permitir que el clic en los elementos del dropdown se registre
+    setTimeout(() => {
+      this.showDropdown = false;
+    }, 200);
+  }
+
   filterAlumnos() {
     const searchTerm = this.searchText.toLowerCase();
     this.filteredAlumnos = this.users.filter(alumno => {
@@ -75,12 +88,14 @@ export class FormularioComponent implements OnInit{
       const surname = alumno.Alumno.surname ? alumno.Alumno.surname.toLowerCase() : '';
       return name.includes(searchTerm) || surname.includes(searchTerm);
     });
+    this.showDropdown = true;
   }
 
   selectAlumno(alumno: DatumListaAlumnos) {
     this.formData.user_id = alumno.alumno_id;
     this.searchText = `${alumno.Alumno.name} ${alumno.Alumno.surname}`;
     this.filteredAlumnos = [];
+    this.showDropdown = false;
   }
 
   onSubmit() {
