@@ -22,3 +22,8 @@
 .close{
     cursor: pointer;
 }
+.container-scroll {
+    overflow-y: auto; /* Permite el scroll interno */
+    height: 100vh; /* Asegura que ocupa toda la altura del viewport */
+
+}

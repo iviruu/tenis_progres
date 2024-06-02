@@ -64,7 +64,7 @@
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-attachment: scroll;
   background-size: cover;
 }
