@@ -10,6 +10,8 @@ import { FormularioComponent } from './components/profe/formulario/formulario.co
 import { MisResultadosComponent } from './shared/mis-resultados/mis-resultados.component';
 import { rolesGuardGuard } from './guards/roles-guard.guard';
 import { AccessDeniedComponent } from './shared/access-denied/access-denied.component';
+import { NuevoAlumnoComponent } from './components/profe/nuevo-alumno/nuevo-alumno.component';
+import { MensajesComponent } from './components/alumno/mensajes/mensajes.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -19,12 +21,14 @@ export const routes: Routes = [
         { path: 'perfil', component: PerfilComponent },
         { path: 'lista_alumnos', component: ListaAlumnosComponent },
         { path: 'resultados', component: FormularioComponent},
+        {path: 'nuevo_alumno', component: NuevoAlumnoComponent},
     ]},
     {path: 'alumno', component: AlumnoComponent, canActivate:[rolesGuardGuard], data:{ expectedRoles: ['1'] }, 
     children:[
         { path: '', redirectTo: 'perfil', pathMatch: 'full' },
         { path: 'perfil', component: PerfilComponent },
         { path: 'mis_resultados', component: MisResultadosComponent},
+        {path: 'mensajes', component: MensajesComponent}
     
     ]},
     {path: 'login', component: AuthComponent},

@@ -10,17 +10,17 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/profe/perfil']" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi bi-person-workspace"></i> <span class="ms-1 d-none d-sm-inline"> Mi perfil</span></a>
-                    </li>
                     @if (roles === '2') {
+                        <li>
+                            <a [routerLink]="['/profe/perfil']" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi bi-person-workspace"></i> <span class="ms-1 d-none d-sm-inline"> Mi perfil</span></a>
+                        </li>
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi bi-person-arms-up"></i> <span class="ms-1 d-none d-sm-inline"> Alumnos</span> </a>
                         <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0 bi bi-person-add"> <span class="d-none d-sm-inline"> Añadir</span> </a>
+                                <a [routerLink]="['/profe/nuevo_alumno']" class="nav-link px-0 bi bi-person-add"> <span class="d-none d-sm-inline"> Añadir</span> </a>
                             </li>
                             <li>
                                 <a [routerLink]="['/profe/lista_alumnos']" class="nav-link px-0 bi bi-people"> <span class="d-none d-sm-inline"> Lista</span> </a>
@@ -34,15 +34,23 @@
                 }
                 @if (roles === '1') {
                     <li>
+                        <a [routerLink]="['/alumno/perfil']" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi bi-person-workspace"></i> <span class="ms-1 d-none d-sm-inline"> Mi perfil</span></a>
+                    </li>
+                    <li>
                         <a [routerLink]="['/alumno/mis_resultados']" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi bi-pentagon"></i> <span class="ms-1 d-none d-sm-inline"> Mis resultados</span> </a>
                     </li>
+                    <li>
+                        <a [routerLink]="['/alumno/mensajes']" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi bi-megaphone"></i> <span class="ms-1 d-none d-sm-inline"> Mensajes</span> </a>
                 }
                 </ul>
                 <hr>
                 <div class="dropdown pb-4 fixed-bottom ps-2 ps-md-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <img *ngIf="user?.photo" [src]="getPhotoUrl(user?.photo ?? '')" width="30" height="30" class="img-account-profile rounded-circle " alt="">
+                        <img *ngIf="!user?.photo" src="http://bootdey.com/img/Content/avatar/avatar1.png" width="30" height="30" class="img-account-profile rounded-circle" alt="">
                         <span class="d-none d-sm-inline mx-1">{{user?.name}} {{user?.surname}}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">

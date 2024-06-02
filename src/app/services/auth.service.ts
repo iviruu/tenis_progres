@@ -49,7 +49,32 @@ export class AuthService {
 
 
   register(data: any){
-    return this.http.post(this.myAppUrl + this.myApiUrl + '/register', data);
+    return this.http.post(this.myAppUrl + this.myApiUrl + '/register', data, {
+      withCredentials: true // Esto asegura que las cookies se envíen
+    }).pipe(
+      tap((response: any) => {
+        if (response.code === 1) {
+          // Almacenar los roles del usuario
+          localStorage.setItem('userRoles', response.data.user.roles)
+          console.log('Roles del usuario:', response.data.user.roles);
+        }
+      }),
+      map((response: any) => {
+        if (response.code === 1) {
+          // Manejar respuesta exitosa
+          return {
+            success: true,
+            user: response.data.user
+          };
+        } else {
+          // Manejar error en la respuesta
+          return {
+            success: false,
+            message: response.message
+          };
+        }
+      })
+    );
   }
 
   logout(){

@@ -36,7 +36,6 @@ export class MisResultadosComponent implements OnInit{
     this.userService.getListaSaques().subscribe({
       next: data => {
         this.saques = data.data;
-        console.log('Saques:', this.saques);
       },
       error: error => {
         console.error('Error al obtener los saques:', error);
@@ -45,12 +44,10 @@ export class MisResultadosComponent implements OnInit{
     this.userService.getUser().subscribe({
       next: data => {
         this.user = data.data;
-        console.log('Usuario:', this.user);
-  if (this.user) {
-  this.userService.getResultadosByIdAlumno(this.user.id_user).subscribe({
+    if (this.user) {
+    this.userService.getResultadosByIdAlumno(this.user.id_user).subscribe({
     next: data => {
       this.resultados = data.data;
-      console.log('Resultados:', this.resultados);
     },
     error: error => {
       console.error('Error al obtener los resultados:', error);
@@ -68,7 +65,6 @@ export class MisResultadosComponent implements OnInit{
     }
   }
   openModal() {
-    console.log('Resultados filtrados:', this.filteredResultados);
     this.modalResultados = this.filteredResultados;
     const modalElement = document.getElementById('resultadosModal');
     if (modalElement) {

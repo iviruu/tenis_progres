@@ -1,0 +1,16 @@
+<div class="container mt-3">
+    <h2>Mensajes</h2>
+    <div *ngIf="solicitud == null">
+      No tienes nuevas solicitudes.
+    </div>
+    @if (solicitud !== null) {
+    <div class="card mb-3">
+      <div class="card-body">
+        <p>El profesor {{ solicitud?.Teacher?.name }} {{ solicitud?.Teacher?.surname }} quiere añadirte a su lista de alumnos.</p>
+        <button class="btn btn-success" (click)="aceptarSolicitud(solicitud!.relacion_id, 1)">Aceptar</button>
+        <button class="btn btn-danger" (click)="aceptarSolicitud(solicitud!.relacion_id, 2)">Rechazar</button>
+      </div>
+    </div>
+}
+  </div>
+  

@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { User } from '../interface/user';
+import { User, updateUser } from '../interface/user';
 import { Saque } from '../interface/saque';
 import { DatumResultados, Resultados } from '../interface/resultados';
 import { ListaAlumnos } from '../interface/ListaAlumnos';
+import { RelacionAlumno, TodaLista, relacion } from '../interface/relacion';
 
 
 @Injectable({
@@ -59,12 +60,39 @@ export class UserService {
     });
   }
 
-  createRelacionProfesorAlumno(alumno_id:number, teacher_id:number, estado_relacion:number):Observable<ListaAlumnos>{
-    return this.http.post<ListaAlumnos>(this.myAppUrl + this.myApiUrl + '/teacher/create', {alumno_id, teacher_id, estado_relacion}, {
+  createRelacionProfesorAlumno(data:Omit<relacion, 'relacion_id'>):Observable<ListaAlumnos>{
+    return this.http.post<ListaAlumnos>(this.myAppUrl + this.myApiUrl + '/teacher/create', data, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
+  getAlumnosList():Observable<TodaLista>{
+    return this.http.get<TodaLista>(this.myAppUrl + this.myApiUrl + '/teacher/alumnosList', {
       withCredentials: true // Asegura que las cookies se envíen con la solicitud
     });
   }
 
+  getRelacionForAlumno(id:number):Observable<RelacionAlumno>{
+    return this.http.get<RelacionAlumno>(this.myAppUrl + this.myApiUrl + '/alumno/relacion/' + id, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
 
+  updateRelacion(ralacion_id:number, estado_relacion:number):Observable<relacion>{
+    return this.http.post<relacion>(this.myAppUrl + this.myApiUrl + '/alumno/update_relacion/' + ralacion_id, {estado_relacion}, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
+
+  update(user: updateUser):Observable<updateUser>{
+    return this.http.post<updateUser>(this.myAppUrl + this.myApiUrl + '/updateUser', user, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
+
+  uploadPhoto(formData: FormData):Observable<any>{ 
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl + '/uploadPhoto', formData, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
 
 }

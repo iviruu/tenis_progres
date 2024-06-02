@@ -16,3 +16,8 @@ export interface Data {
     updated_at: Date;
 }
 
+export interface updateUser{
+    email: string;
+    name: string;
+    surname: string;
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -12,8 +12,19 @@ import { AuthService } from '../../services/auth.service';
 export class HomeComponent {
  roles: string= '';
 
-  constructor(private authService: AuthService) { 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { 
+    this.tuRol()
+  }
+  tuRol(){
     this.roles= localStorage.getItem('userRoles')!;
-    console.log(this.roles);
+  }
+  logout(){
+    this.authService.logout().subscribe(() => {
+      localStorage.removeItem('userRoles');
+      this.tuRol();
+    });
   }
 }

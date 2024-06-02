@@ -16,7 +16,7 @@ export class AuthComponent {
 
   form: FormGroup;
   enviar: boolean = false;
-
+  roles: string= '';
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -36,8 +36,13 @@ export class AuthComponent {
       this.enviar = false;
       this.login.login(this.form.value.email, this.form.value.password).subscribe({
         next: res => {
-          console.log(res);
+          this.roles= localStorage.getItem('userRoles')!;
+          if(this.roles === '2'){
           this.router.navigate(['/profe']);
+        }
+          else if(this.roles === '1'){
+            this.router.navigate(['/alumno']);
+          }
         },
         error: err => {
           console.log(err);

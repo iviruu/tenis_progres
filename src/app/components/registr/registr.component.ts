@@ -17,6 +17,7 @@ export class RegistrComponent {
 
   form: FormGroup;
   enviar: boolean = false;
+  serverError: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -36,15 +37,25 @@ export class RegistrComponent {
 
   onSubmit(){
     this.enviar = true;
+    this.serverError = null;
     if(this.form.valid){
       this.enviar = false;
       this.login.register(this.form.value).subscribe({
-        next: res => {
-          console.log(res);
-          this.router.navigate(['/profe']);
+        next: res => {          
+          if (this.form.value.roles === '2') {
+            this.router.navigate(['/profe']);
+          } else if (this.form.value.roles === '1') {
+            this.router.navigate(['/alumno']);
+          }
         },
         error: err => {
           console.log(err);
+          if (err.error && err.error.message) {
+            
+            this.serverError = err.error.message; // Capture server error message
+          } else {
+            this.serverError = 'An unexpected error occurred. Please try again later.';
+          }
         }
       });
       

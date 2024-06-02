@@ -31,13 +31,10 @@ export class ListaAlumnosComponent implements OnInit{
     this.userService.getUser().subscribe({
       next: data => {
         this.user = data.data;
-        console.log('Usuario:', this.user);
-
         if (this.user) {
           this.userService.getAlumnosByProfesor(this.user.id_user).subscribe({
             next: data => {
               this.users = data.data;
-              console.log('Alumnos:', this.users);
             },
             error: error => {
               console.error('Error al obtener los alumnos:', error);
@@ -94,7 +91,6 @@ export class ListaAlumnosComponent implements OnInit{
 
   modifyUser(user: DatumListaAlumnos) {
     // Lógica para modificar usuario
-    console.log('Modificar usuario:', user);
   }
 
   deleteUser(user: DatumListaAlumnos) {

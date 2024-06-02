@@ -101,7 +101,6 @@ export class ChardsComponent implements OnChanges {
 
     if (changes['resultados'] || changes['chartType']) {
       this.createChart();
-      console.log(this.chartType)
     }
   }
 transformData() {

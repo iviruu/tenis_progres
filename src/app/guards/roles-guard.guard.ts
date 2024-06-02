@@ -9,8 +9,6 @@ export const rolesGuardGuard: CanActivateFn = (route: ActivatedRouteSnapshot, st
   
   const userRoles = authService.getUserRoles();
 
-  console.log('Roles esperados:', expectedRoles);
-  console.log('Roles del usuario:', userRoles);
 
 
   const userRolesArray = userRoles.split(',').map(role => role.trim());

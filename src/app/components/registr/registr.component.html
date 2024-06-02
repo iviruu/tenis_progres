@@ -1,66 +1,65 @@
 <div class="container-fluid fondo">
-    <div class="row justify-content-cente">
+    <div class="row justify-content-center">
         <div class="col-12 text-center">
             <img class="logo" src="../../../assets/logo/logotenis.png" alt="">
         </div>
     </div>
     <div class="row justify-content-center">
-
-        <div class="col-11 col-md-6 col-lg-4  auth">
+        <div class="col-11 col-md-6 col-lg-4 auth">
             <div class="row text-center">
                 <div class="col-10 offset-1">
-                    <label class="form-label my-4 "><p class="h4 text-primary-emphasis">Si ya estas registrado <a routerLink="/login" class="text-warning">toca aqui</a>!</p></label>
+                    <label class="form-label my-4">
+                        <p class="h4 text-primary-emphasis">Si ya estas registrado <a routerLink="/login" class="text-warning">toca aqui</a>!</p>
+                    </label>
                 </div>
                 <div class="col-1">
-                    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="h3 text-info close" >x</span>
+                    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="h3 text-info close">x</span>
                 </div>
-            </div> 
+            </div>
             <form (ngSubmit)="onSubmit()" [formGroup]="form">
-        <div class="form-floating mb-3">
-            <input type="string" class="form-control" id="name" formControlName="name" placeholder="Nombre" >
-            <label for="floatingInput">Nombre</label>
-            <span *ngIf="form.get('name')?.hasError('required') && (form.get('name')?.touched || enviar)" class="text-danger">
-                El campo nombre es <strong>requerido</strong>
-            </span>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="string" class="form-control" id="surname" formControlName="surname" placeholder="Apellido">
-            <label for="floatingInput">Apellido</label>
-            <span *ngIf="form.get('surname')?.hasError('required') && (form.get('surname')?.touched || enviar)" class="text-danger">
-                El campo apellido es <strong>requerido</strong>
-            </span>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com" >
-            <label for="floatingInput">Email address</label>
-            <span *ngIf="(form.get('email')?.hasError('required') || form.get('email')?.hasError('email')) && (form.get('email')?.touched || enviar)" class="text-danger">
-                El campo email es <strong>requerido</strong>
-            </span>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-            <span *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.touched || enviar)" class="text-danger">
-                El campo password es <strong>requerido</strong>
-            </span>
-        </div>
-        <div>  
-            <select class="form-select py-3" id="roles" formControlName="roles">
-                <option value="" disabled selected>Elige si eres professor o alumno</option>
-                <option value="2">Profesor</option>
-                <option value="1">Alumno</option>
-            </select>
-            <span *ngIf="form.get('roles')?.hasError('required') && (form.get('roles')?.touched || enviar)" class="text-danger">
-                El campo rol es <strong>requerido</strong>
-            </span>
-          </div>
-        
-
-        <button class="btn btn-primary my-3 px-5 " type="submit"> Registrarse</button> 
-            </form> 
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre">
+                    <label for="name">Nombre</label>
+                    <span *ngIf="form.get('name')?.hasError('required') && (form.get('name')?.touched || enviar)" class="text-danger">
+                        El campo nombre es <strong>requerido</strong>
+                    </span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Apellido">
+                    <label for="surname">Apellido</label>
+                    <span *ngIf="form.get('surname')?.hasError('required') && (form.get('surname')?.touched || enviar)" class="text-danger">
+                        El campo apellido es <strong>requerido</strong>
+                    </span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
+                    <label for="email">Email address</label>
+                    <span *ngIf="(form.get('email')?.hasError('required') || form.get('email')?.hasError('email')) && (form.get('email')?.touched || enviar)" class="text-danger">
+                        El campo email es <strong>requerido</strong>
+                    </span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                    <label for="password">Password</label>
+                    <span *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.touched || enviar)" class="text-danger">
+                        El campo password es <strong>requerido</strong>
+                    </span>
+                </div>
+                <div>
+                    <select class="form-select py-3" id="roles" formControlName="roles">
+                        <option value="" disabled selected>Elige si eres professor o alumno</option>
+                        <option value="2">Profesor</option>
+                        <option value="1">Alumno</option>
+                    </select>
+                    <span *ngIf="form.get('roles')?.hasError('required') && (form.get('roles')?.touched || enviar)" class="text-danger">
+                        El campo rol es <strong>requerido</strong>
+                    </span>
+                </div>
+                <button class="btn btn-primary my-3 px-5" type="submit">Registrarse</button>
+            </form>
+            <div *ngIf="serverError" class="alert alert-danger mt-3" role="alert">
+                {{ serverError }}
+            </div>
         </div>
     </div>
-
-  </div>
-  
-
+</div>
