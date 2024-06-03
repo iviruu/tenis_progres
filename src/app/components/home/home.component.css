@@ -1,5 +1,6 @@
 .fondo_principal{
-    background-image: url('../../../assets/fondo/entrenamiento.webp');
+    background-image: url('../../../assets/fondo/tennis-point-ball-hitting-line-600nw-1802035477.webp');
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -9,10 +10,35 @@
     position: relative;
     z-index: 1;
 }
+.font-bebas-neue-300 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 300;
+}
+
+.font-bebas-neue-600 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 600;
+}
+
+.font-helvetica-300 {
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.font-helvetica-500 {
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.font-helvetica-700 {
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
 
 .img-fluid{
-    width: 70%;
-    height:auto;
+    width: 25rem;
+    height:25rem;
 
 }
 .usuario{
@@ -45,7 +71,7 @@
 
 }
 .info{
-    background-color: #f8f9fa;
+  background-color: rgb(239,237,237);
     border: 1px solid #e4dddd;
     border-radius: 5px;
 }
@@ -54,8 +80,23 @@
 }
 
 .bg_dark{
-    background-color: #53585dd1;
+    background-color: #000000;
 
+}
+.bg_yelow{
+  background-color: #E1BE1D;
+}
+.bg_white{
+  background-color: #ffffff;
+}
+.text-white{
+  color: #ffffff;
+}
+.text-dark{
+  color: #000000;
+}
+.text-yelow{
+  color: #E1BE1D;
 }
 
 .masthead {
@@ -79,6 +120,10 @@
   font-size: 2rem;
 }
 @media (max-width: 992px) {
+  .img-fluid{
+    width: 15rem;
+    height:15rem;
+  }
  .info{
     text-align: center;
  }
@@ -87,4 +132,14 @@
   .texto-final{
     text-align: end;
   }
+}
+.saber_mas {
+  font-size: 30px;
+  padding: 10px 20px;
+  transition: font-size 0.3s ease, padding 0.3s ease;
+}
+
+.saber_mas:hover {
+  font-size: 40px;
+  padding: 15px 30px;
 }
