@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-xl-4">
         <div class="card mb-4 mb-xl-0">
-          <div class="card-header">Profile Picture</div>
+          <div class="card-header"> <p class="font-bebas-neue-600 m-0">Profile Picture</p></div>
           <div class="card-body text-center">
             <img class="img-account-profile rounded-circle mb-2" [src]="user?.photo ? 'http://localhost:3000/uploads/' + user?.photo : 'http://bootdey.com/img/Content/avatar/avatar1.png'" alt="">
-            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 2 MB</div>
+            <div class="small font-helvetica-300 text-muted mb-4">JPG or PNG no larger than 2 MB</div>
             <input type="file" (change)="onFileSelected($event)" #fileInput hidden>
-            <button class="btn btn-primary" type="button" (click)="fileInput.click()">Subir nueva imagen</button>
+            <button class="btn bg_yelow font-helvetica-500" type="button" (click)="fileInput.click()">Subir nueva imagen</button>
             <div *ngIf="uploadMessage" class="alert alert-info mt-2">{{ uploadMessage }}</div>
             <div *ngIf="uploadErrorMessage" class="alert alert-danger mt-2">{{ uploadErrorMessage }}</div>
           </div>
@@ -16,18 +16,18 @@
       </div>
       <div class="col-xl-8">
         <div class="card mb-4">
-          <div class="card-header">Account Details</div>
+          <div class="card-header"><p class="font-bebas-neue-600 m-0">Account Details</p></div>
           <div class="card-body">
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
               <div class="row gx-3 mb-3">
-                <div class="col-md-6">
+                <div class="col-md-6 font-helvetica-500">
                   <label class="small mb-1" for="inputFirstName">Nombre</label>
                   <input class="form-control" id="inputFirstName" formControlName="name" type="text" placeholder="Enter your first name">
                   <div *ngIf="submitted && userForm.get('name')?.invalid">
                     <small class="text-danger" *ngIf="userForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 font-helvetica-500">
                   <label class="small mb-1" for="inputLastName">Apellido</label>
                   <input class="form-control" id="inputLastName" formControlName="surname" type="text" placeholder="Enter your last name">
                   <div *ngIf="submitted && userForm.get('surname')?.invalid">
@@ -35,7 +35,7 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
+              <div class="mb-3 font-helvetica-500">
                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
                 <input class="form-control" id="inputEmailAddress" formControlName="email" type="email" placeholder="Enter your email address">
                 <div *ngIf="submitted && userForm.get('email')?.invalid">
@@ -43,7 +43,7 @@
                   <small class="text-danger" *ngIf="userForm.get('email')?.errors?.['email']">El correo electrónico debe ser válido.</small>
                 </div>
               </div>
-              <button class="btn btn-primary" type="submit">Guardar cambios!</button>
+              <button class="btn bg_yelow font-helvetica-500" type="submit">Guardar cambios</button>
             </form>
             <div *ngIf="formMessage" class="alert alert-info mt-2">{{ formMessage }}</div>
             <div *ngIf="formErrorMessage" class="alert alert-danger mt-2">{{ formErrorMessage }}</div>

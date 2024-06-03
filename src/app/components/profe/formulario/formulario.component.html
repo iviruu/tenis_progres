@@ -1,17 +1,17 @@
 <div class="container mt-3">
   <!-- Alerta de confirmación -->
   <div *ngIf="showConfirmation" class="alert alert-success" role="alert">
-    ¡Resultados enviados correctamente!
+    <p>¡Resultados enviados correctamente!</p>
   </div>
 
   <!-- Alerta de error -->
   <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-    {{ errorMessage }}
+    <p>{{ errorMessage }}</p>
   </div>
 
   <form [formGroup]="formData" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="alumno" class="form-label">Alumno</label>
+      <label for="alumno" class="form-label text_dark font-bebas-neue-600">Alumno</label>
       <input type="text" class="form-control" id="alumno" [value]="searchText" (focus)="showAllAlumnos()" (blur)="hideAlumnos()" (input)="filterAlumnos()" autocomplete="off">
       <div *ngIf="showDropdown" class="dropdown-menu show w-100">
         <button class="dropdown-item" *ngFor="let alumno of filteredAlumnos" (click)="selectAlumno(alumno)">
@@ -23,16 +23,16 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="saque" class="form-label">Saque</label>
+      <label for="saque" class="form-label text_dark font-bebas-neue-600">Saque</label>
       <select id="saque" class="form-select" formControlName="saque_id" required>
-        <option *ngFor="let saque of saques" [value]="saque.id_saque">{{ saque.type_saque }}</option>
+        <option *ngFor="let saque of saques" [value]="saque.id_saque"><p>{{ saque.type_saque }}</p></option>
       </select>
       <div *ngIf="submitted && formData.get('saque_id')?.invalid">
         <small class="text-danger">Selecciona un saque válido.</small>
       </div>
     </div>
     <div class="mb-3">
-      <label for="velocidad" class="form-label">Velocidad</label>
+      <label for="velocidad" class="form-label text_dark font-bebas-neue-600">Velocidad</label>
       <input type="number" id="velocidad" class="form-control" formControlName="velocidad" required>
       <div *ngIf="submitted && formData.get('velocidad')?.invalid">
         <small class="text-danger" *ngIf="formData.get('velocidad')?.errors?.['required']">La velocidad es obligatoria.</small>
@@ -40,13 +40,13 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="punteria" class="form-label">Puntería</label>
+      <label for="punteria" class="form-label text_dark font-bebas-neue-600">Puntería</label>
       <input type="number" id="punteria" class="form-control" formControlName="punteria" required>
       <div *ngIf="submitted && formData.get('punteria')?.invalid">
         <small class="text-danger" *ngIf="formData.get('punteria')?.errors?.['required']">La puntería es obligatoria.</small>
         <small class="text-danger" *ngIf="formData.get('punteria')?.errors?.['min']">La puntería debe ser mayor que 0.</small>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Enviar</button>
+    <button class="btn bg_yelow font-arial-600 text_white" type="submit">Enviar</button>
   </form>
 </div>

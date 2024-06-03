@@ -1,20 +1,20 @@
 <div class="container mt-3">
-  <h2>Agregar Nuevo Alumno</h2>
+  <h2 class="font-bebas-neue-600 text_yelow">Agregar Nuevo Alumno</h2>
 
   <!-- Alerta de confirmación -->
   <div *ngIf="showConfirmation" class="alert alert-success" role="alert">
-    ¡Solicitud enviada correctamente!
+    <p>¡Solicitud enviada correctamente!</p>
   </div>
 
   <!-- Alerta de error -->
   <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-    {{ errorMessage }} 
+    <p>{{ errorMessage }} </p>
     <p>O ya tienes enviada una solicitud o esta en la lista de alumnos.</p>
   </div>
 
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="mb-3 position-relative">
-      <label for="alumno" class="form-label">Buscar Alumno</label>
+      <label for="alumno" class="form-label font-helvetica-700">Buscar Alumno</label>
       <input 
         type="text" 
         class="form-control" 
@@ -32,6 +32,6 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Agregar alumno</button>
+    <button type="submit" class="btn bg_yelow text_white font-arial-600">Agregar alumno</button>
   </form>
 </div>

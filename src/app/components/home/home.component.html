@@ -1,22 +1,22 @@
-<div class="container-fluid fondo_principal fondo_color p-0"> 
+<div class="container-fluid fondo_principal p-0"> 
 
     <div class="container-scroll">
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top bg_dark">
             <div class="container px-5">
-                <a class="navbar-brand text-yelow font-helvetica-500" href="#page-top">Tennis Progress</a>
+                <a class="navbar-brand text_yelow font-helvetica-500" href="#page-top">Tennis Progress</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto"> 
                     @if (roles == '2'){
-                    <li class="nav-item "><a class="nav-link text-white font-helvetica-500" routerLink="/profe">Mi Perfil</a></li>
-                    <li class="nav-item " (click)="logout()"><a class="nav-link text-yelow font-helvetica-500" >Salir</a></li>
+                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500" routerLink="/profe">Mi Perfil</a></li>
+                    <li class="nav-item " (click)="logout()"><a class="nav-link text_yelow font-helvetica-500" >Salir</a></li>
                     }
                     @if (roles == '1'){
-                    <li class="nav-item "><a class="nav-link text-white font-helvetica-500" routerLink="/alumno">Mi Perfil</a></li>
-                    <li class="nav-item " (click)="logout()"><a class="nav-link text-yelow font-helvetica-500">Salir</a></li>
+                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500" routerLink="/alumno">Mi Perfil</a></li>
+                    <li class="nav-item " (click)="logout()"><a class="nav-link text_yelow font-helvetica-500">Salir</a></li>
                     } @else if (roles == null || roles == undefined){
-                    <li class="nav-item "><a class="nav-link text-white font-helvetica-500" href="register">Registrarse</a></li>
-                    <li class="nav-item "><a class="nav-link text-yelow font-helvetica-500" href="login">Entrar</a></li>
+                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500" href="register">Registrarse</a></li>
+                    <li class="nav-item "><a class="nav-link text_yelow font-helvetica-500" href="login">Entrar</a></li>
                     }
                     </ul>
                 </div>
@@ -26,22 +26,22 @@
         <header class="masthead text-center">
             <div class="masthead-content">
                 <div class="container px-5 ">
-                    <h1 class="masthead-heading mb-0 text-titulo text-white font-bebas-neue-600">Tennis Progress!</h1>
-                    <h2 class="masthead-subheading mb-0 text-titulo text-white font-helvetica-300">Conéctate y progresa en tu camino hacia la excelencia en el tenis.</h2>
-                    <a class="btn bg_yelow mt-5 text-dark saber_mas font-helvetica-300" href="home#scroll">Saber mas!</a>
+                    <h1 class="masthead-heading mb-0 text_white font-bebas-neue-600">Tennis Progress!</h1>
+                    <h2 class="masthead-subheading mb-0 text_white font-helvetica-300">Conéctate y progresa en tu camino hacia la excelencia en el tenis.</h2>
+                    <a class="btn bg_yelow mt-5 text_dark saber_mas font-helvetica-300" href="home#scroll">Saber mas.</a>
                 </div>
             </div>
         </header>
         <div class="vacio2"></div>
         <div class="info">
          <section id="scroll" >
-                <div class="row gx-5 align-items-center">
+                <div class="row gx-5 align-items-center ">
                     <div class="col-lg-5 order-lg-2 ">
-                        <div class="p-5"><img class="img-fluid rounded-circle" src="../../../assets/img/entrenador.jpg" alt="..." /></div>
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="../../../assets/img/rafaYToni.png" alt="..." /></div>
                     </div>
                     <div class="col-lg-5 order-lg-1 offset-lg-2">
                         <div class="p-5">
-                            <h2 class="display-4 text-yelow font-bebas-neue-600">Para los entrenadores:</h2>
+                            <h2 class="display-4 text_yelow font-bebas-neue-600">Para los entrenadores:</h2>
                             <p class="font-bebas-neue-600">Subida de Datos:</p><p class="font-helvetica-300"> Los entrenadores pueden subir y gestionar los datos de progreso de cada alumno. Esto incluye estadísticas de rendimiento, resultados de entrenamientos, y evaluaciones personalizadas. La interfaz amigable permite a los entrenadores actualizar la información de manera rápida y eficiente, asegurando que los datos estén siempre al día.</p>
                             <p class="font-bebas-neue-600">Gestión de Alumnos:</p><p class="font-helvetica-300"> Los entrenadores tienen acceso a un panel de control donde pueden ver un listado de todos sus alumnos. Pueden añadir comentarios y notas específicas para cada alumno, ayudando a personalizar y adaptar el entrenamiento según las necesidades individuales.</p>                                </div>
                     </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-lg-5 ">
                         <div class="p-5">
-                            <h2 class="display-4 text-yelow font-bebas-neue-600">Para los Alumnos:</h2>
+                            <h2 class="display-4 text_yelow font-bebas-neue-600">Para los Alumnos:</h2>
                             <p class="font-bebas-neue-600">Visualización de Resultados:</p><p class="font-helvetica-300"> Los alumnos pueden ver sus resultados y progresos en forma de tablas y gráficos interactivos. Esta visualización clara y detallada permite a los alumnos entender mejor su evolución, identificar áreas de mejora y celebrar sus logros.</p>
                             <p class="font-bebas-neue-600">Acceso Personalizado:</p><p class="font-helvetica-300"> Cada alumno tiene un acceso personalizado a sus datos, asegurando la privacidad y confidencialidad de la información. Los alumnos pueden revisar sus estadísticas en cualquier momento, lo que les ayuda a mantenerse motivados y enfocados en sus objetivos.</p>
                         </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-lg-5 order-lg-1 offset-lg-2">
                         <div class="p-5">
-                            <h2 class="display-4 text-yelow font-bebas-neue-600">Beneficios Generales:</h2>
+                            <h2 class="display-4 text_yelow font-bebas-neue-600">Beneficios Generales:</h2>
                     <p class="font-bebas-neue-600">Transparencia y Motivación:</p><p class="font-helvetica-300"> Al tener acceso constante a sus datos de rendimiento, los alumnos pueden ver claramente su progreso. Esto no solo fomenta la transparencia sino que también aumenta la motivación y el compromiso con el entrenamiento.</p>
                     <p class="font-bebas-neue-600">Optimización del Entrenamiento:</p> <p class="font-helvetica-300">Los datos recopilados permiten a los entrenadores analizar patrones y ajustar los programas de entrenamiento para maximizar el rendimiento de cada alumno.</p>
                         </div>
@@ -86,7 +86,7 @@
     
     <div class="row apartado bg_dark">
         <div class="col-md-12">
-            <h5 class="text-center text-yelow font-bebas-neue-600">Desarrollada por:</h5>
+            <h5 class="text-center text_yelow font-bebas-neue-600">Desarrollada por:</h5>
             <p class="text-center font-bebas-neue-600"><a href="https://www.linkedin.com/in/ivan-kokin-a13aab158/" target="_blank" style="color: white;">Ivan Kokin</a></p>
         </div>
     </div>

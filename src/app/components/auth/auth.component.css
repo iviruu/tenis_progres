@@ -3,7 +3,7 @@
     height: auto;
 }
 .fondo{
-    background-image: url('../../../assets/fondo/profe_alumnos.webp');
+    background-image: url('../../../assets/fondo/pilotasPista.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +14,7 @@
     z-index: 1;
 }
 .auth{
-    background-color: #bcb4b470;
+    background-color: #0f0f0f8c;
     border: 2px solid #e4dddd;
     box-shadow: 0 0 10px rgba(189, 185, 185, 0.7);
 
@@ -30,3 +30,46 @@
 .container-scroll::-webkit-scrollbar {
     display: none;
   }
+  .font-bebas-neue-300 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-bebas-neue-600 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 600;
+  }
+  
+  .font-helvetica-300 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-helvetica-500 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+  
+  .font-helvetica-700 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 700;
+  }
+  .bg_dark{
+    background-color: #000000;
+
+}
+.bg_yelow{
+  background-color: #E1BE1D;
+}
+.bg_white{
+  background-color: #ffffff;
+}
+.text_white{
+  color: #ffffff;
+}
+.text_dark{
+  color: #000000;
+}
+.text_yelow{
+  color: #E1BE1D;
+}

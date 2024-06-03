@@ -1,17 +1,45 @@
-.img_logo{
-    width: 100%;
-    height:100px;
+.font-bebas-neue-300 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-bebas-neue-600 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 600;
+  }
+  
+  .font-helvetica-300 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-helvetica-500 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+  
+  .font-helvetica-700 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 700;
+  }
+  .bg_dark{
+    background-color: #000000;
 }
-@media (max-width: 768px) {
-    .img_logo{
-        width: 100%;
-        height:50px;
-    }
+.bg_gray{
+  background-color: #EFEDED;
 }
-@media (max-width: 576px) {
-    .img_logo{
-        width: 100%;
-        height:30px;
-    }
-
+.bg_yelow{
+  background-color: #E1BE1D;
+}
+.bg_white{
+  background-color: #ffffff;
+}
+.text_white{
+  color: #ffffff;
+}
+.text_dark{
+  color: #000000;
+}
+.text_yelow{
+  color: #E1BE1D;
 }

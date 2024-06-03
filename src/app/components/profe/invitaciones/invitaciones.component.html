@@ -1,13 +1,13 @@
 <div class="container mt-3">
-    <h2>Mensajes</h2>
+    <h2 class="font-bebas-neue-600">Mensajes</h2>
     <div *ngIf="solicitud.length === 0">
-      No tienes solicitudes pendientes.
+      <p class="font-helvetica-300 ">No tienes solicitudes pendientes.</p>
     </div>
     <div *ngIf="solicitud.length > 0">
       <div *ngFor="let alumno of solicitud; let i = index" class="card mb-3">
         <div class="card-body">
-          <p>El alumno {{ alumno.Alumno.name }} {{ alumno.Alumno.surname }} le falta aceptar esta solicitud.</p>
-          <button class="btn btn-danger" (click)="eliminarSolicitud(alumno.relacion_id)">Eliminar</button>
+          <p class="font-helvetica-300 ">El alumno {{ alumno.Alumno.name }} {{ alumno.Alumno.surname }} le falta aceptar esta solicitud.</p>
+          <button class="btn bg_yelow font-arial-600 text_white" (click)="eliminarSolicitud(alumno.relacion_id)">Eliminar</button>
         </div>
       </div>
     </div>

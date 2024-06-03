@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container  mt-3">
   <div class="row mb-3">
     <div class="col">
       <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchText">
@@ -7,25 +7,25 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th (click)="sortTable('name')">
+        <th class="font-bebas-neue-600 text_dark" (click)="sortTable('name')">
           Nombre 
           <i *ngIf="sortKey === 'name'" class="bi" [ngClass]="{'bi-caret-up-fill': sortDirection, 'bi-caret-down-fill': !sortDirection}"></i>
         </th>
-        <th (click)="sortTable('surname')">
+        <th class="font-bebas-neue-600 text_dark" (click)="sortTable('surname')">
           Apellido 
           <i *ngIf="sortKey === 'surname'" class="bi" [ngClass]="{'bi-caret-up-fill': sortDirection, 'bi-caret-down-fill': !sortDirection}"></i>
         </th>
 
-        <th>Acciones</th>
+        <th class="font-bebas-neue-600 text_dark">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of filteredUsers()">
+      <tr class="font-helvetica-500" *ngFor="let user of filteredUsers()">
         <td>{{ user.Alumno.name }}</td>
         <td>{{ user.Alumno.surname }}</td>
         <td>
-          <button class="btn btn-primary btn-sm" (click)="modifyUser(user)">Modificar</button>
-          <button class="btn btn-danger btn-sm" (click)="deleteUser(user)">Borrar</button>
+          <button class="btn bg_dark text_yelow btn-sm font-helvetica-500 me-2" (click)="modifyUser(user)">Ver perfil</button>
+          <button class="btn bg_yelow text_white btn-sm font-arial-600" (click)="deleteUser(user)">Eliminar</button>
         </td>
       </tr>
     </tbody>

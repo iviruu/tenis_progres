@@ -1,0 +1,53 @@
+.font-bebas-neue-300 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 300;
+}
+
+.font-bebas-neue-600 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 600;
+}
+
+.font-helvetica-300 {
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.font-helvetica-500 {
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.font-helvetica-700 {
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 700;
+}
+.bg_dark{
+  background-color: #000000;
+}
+.bg_gray{
+background-color: #EFEDED;
+}
+.bg_yelow{
+background-color: #E1BE1D;
+}
+.bg_white{
+background-color: #ffffff;
+}
+.text_white{
+color: #ffffff;
+}
+.text_dark{
+color: #000000;
+}
+.text_yelow{
+color: #E1BE1D;
+}
+p{
+font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+  font-weight: 300;
+}
+.font-arial-600{
+font-family: 'Arial', sans-serif;
+font-weight: 700;
+}

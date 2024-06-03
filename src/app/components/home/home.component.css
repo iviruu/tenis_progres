@@ -1,6 +1,5 @@
 .fondo_principal{
-    background-image: url('../../../assets/fondo/tennis-point-ball-hitting-line-600nw-1802035477.webp');
-    
+    background-image: url('../../../assets/fondo/raquetaAmarilla.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +9,8 @@
     position: relative;
     z-index: 1;
 }
+
+
 .font-bebas-neue-300 {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 300;
@@ -35,7 +36,9 @@
   font-weight: 700;
 }
 
-
+p{
+  color: #000000;
+}
 .img-fluid{
     width: 25rem;
     height:25rem;
@@ -55,10 +58,7 @@
     height: 40vh;
     width: 100%;
 }
-.text-titulo{
-    color: #fffefe;
 
-}
 .apartado {
     padding: 50px 20px;
     background: rgb(99, 124, 132); /* Fondo semitransparente para mejorar la legibilidad */
@@ -89,13 +89,13 @@
 .bg_white{
   background-color: #ffffff;
 }
-.text-white{
+.text_white{
   color: #ffffff;
 }
-.text-dark{
+.text_dark{
   color: #000000;
 }
-.text-yelow{
+.text_yelow{
   color: #E1BE1D;
 }
 

@@ -10,11 +10,11 @@
             <div class="row text-center">
                 <div class="col-10 offset-1">
                     <label class="form-label my-4">
-                        <p class="h4 text-primary-emphasis">Si ya estas registrado <a routerLink="/login" class="text-warning">toca aqui</a>!</p>
+                        <p class="h4 text_white font-bebas-neue-600">Si ya estas registrado <a routerLink="/login" class="text_yelow font-bebas-neue-600">toca aqui</a>.</p>
                     </label>
                 </div>
                 <div class="col-1">
-                    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="h3 text-info close">x</span>
+                    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="h3 text_yelow font-bebas-neue-600 close">x</span>
                 </div>
             </div>
             <form (ngSubmit)="onSubmit()" [formGroup]="form">
@@ -56,7 +56,7 @@
                         El campo rol es <strong>requerido</strong>
                     </span>
                 </div>
-                <button class="btn btn-primary my-3 px-5" type="submit">Registrarse</button>
+                <button class="btn my-3 px-5 bg_yelow font-helvetica-500 " type="submit">Registrarse</button>
             </form>
             <div *ngIf="serverError" class="alert alert-danger mt-3" role="alert">
                 {{ serverError }}
