@@ -12,6 +12,7 @@ import { rolesGuardGuard } from './guards/roles-guard.guard';
 import { AccessDeniedComponent } from './shared/access-denied/access-denied.component';
 import { NuevoAlumnoComponent } from './components/profe/nuevo-alumno/nuevo-alumno.component';
 import { MensajesComponent } from './components/alumno/mensajes/mensajes.component';
+import { InvitacionesComponent } from './components/profe/invitaciones/invitaciones.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -22,6 +23,7 @@ export const routes: Routes = [
         { path: 'lista_alumnos', component: ListaAlumnosComponent },
         { path: 'resultados', component: FormularioComponent},
         {path: 'nuevo_alumno', component: NuevoAlumnoComponent},
+        {path: 'invitacion', component: InvitacionesComponent}
     ]},
     {path: 'alumno', component: AlumnoComponent, canActivate:[rolesGuardGuard], data:{ expectedRoles: ['1'] }, 
     children:[

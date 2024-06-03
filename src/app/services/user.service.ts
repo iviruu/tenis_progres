@@ -7,6 +7,7 @@ import { Saque } from '../interface/saque';
 import { DatumResultados, Resultados } from '../interface/resultados';
 import { ListaAlumnos } from '../interface/ListaAlumnos';
 import { RelacionAlumno, TodaLista, relacion } from '../interface/relacion';
+import { ListaPendiente } from '../interface/alumnosPendientes';
 
 
 @Injectable({
@@ -91,6 +92,18 @@ export class UserService {
 
   uploadPhoto(formData: FormData):Observable<any>{ 
     return this.http.post<any>(this.myAppUrl + this.myApiUrl + '/uploadPhoto', formData, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
+
+  getRelacionIdProfesor(id:number):Observable<ListaPendiente>{
+    return this.http.get<ListaPendiente>(this.myAppUrl + this.myApiUrl + '/profe/relacion/' + id, {
+      withCredentials: true // Asegura que las cookies se envíen con la solicitud
+    });
+  }
+
+  deleteRelacion(id:number):Observable<any>{
+    return this.http.delete(this.myAppUrl + this.myApiUrl + '/profe/delete_relacion/' + id, {
       withCredentials: true // Asegura que las cookies se envíen con la solicitud
     });
   }

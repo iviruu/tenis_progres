@@ -1,4 +1,17 @@
 <div class="container mt-3">
+  <h2>Agregar Nuevo Alumno</h2>
+
+  <!-- Alerta de confirmación -->
+  <div *ngIf="showConfirmation" class="alert alert-success" role="alert">
+    ¡Solicitud enviada correctamente!
+  </div>
+
+  <!-- Alerta de error -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }} 
+    <p>O ya tienes enviada una solicitud o esta en la lista de alumnos.</p>
+  </div>
+
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="mb-3 position-relative">
       <label for="alumno" class="form-label">Buscar Alumno</label>

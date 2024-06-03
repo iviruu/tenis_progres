@@ -27,3 +27,6 @@
     height: 100vh; /* Asegura que ocupa toda la altura del viewport */
 
 }
+.container-scroll::-webkit-scrollbar {
+    display: none;
+  }

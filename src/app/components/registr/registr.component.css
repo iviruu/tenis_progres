@@ -25,5 +25,11 @@
 .container-scroll {
     overflow-y: auto; /* Permite el scroll interno */
     height: 100vh; /* Asegura que ocupa toda la altura del viewport */
-
+    overflow: scroll;
 }
+.vacio{
+    height: 60px;
+}
+.container-scroll::-webkit-scrollbar {
+    display: none;
+  }

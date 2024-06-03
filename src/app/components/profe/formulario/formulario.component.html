@@ -1,4 +1,14 @@
 <div class="container mt-3">
+  <!-- Alerta de confirmación -->
+  <div *ngIf="showConfirmation" class="alert alert-success" role="alert">
+    ¡Resultados enviados correctamente!
+  </div>
+
+  <!-- Alerta de error -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
   <form [formGroup]="formData" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="alumno" class="form-label">Alumno</label>

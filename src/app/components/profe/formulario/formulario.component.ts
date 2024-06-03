@@ -20,21 +20,26 @@ export class FormularioComponent implements OnInit{
   searchText: string = '';
   filteredAlumnos: DatumListaAlumnos[] = [];
   showDropdown: boolean = false;
+  submitted: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
+  showConfirmation: boolean = false;
+
   users: DatumListaAlumnos[] = [];
   user?: Data;
   saques: DatumSaque[] = [];
+
   formData: FormGroup;
-  submitted: boolean = false;
 
   constructor(
     private userService: UserService,
     private fb: FormBuilder
   ) {
     this.formData = this.fb.group({
-      user_id: [undefined, Validators.required],
-      saque_id: [undefined, Validators.required],
-      velocidad: [undefined, [Validators.required, Validators.min(1)]],
-      punteria: [undefined, [Validators.required, Validators.min(1)]]
+      user_id: [null, Validators.required],
+      saque_id: [null, Validators.required],
+      velocidad: [null, [Validators.required, Validators.min(1)]],
+      punteria: [null, [Validators.required, Validators.min(1)]]
     });
   }
 
@@ -42,11 +47,13 @@ export class FormularioComponent implements OnInit{
     this.userService.getUser().subscribe({
       next: data => {
         this.user = data.data;
+        console.log('Usuario:', this.user);
 
         if (this.user) {
           this.userService.getAlumnosByProfesor(this.user['id_user']).subscribe({
             next: data => {
               this.users = data.data;
+              console.log('Alumnos:', this.users);
             },
             error: error => {
               console.error('Error al obtener los alumnos:', error);
@@ -58,9 +65,11 @@ export class FormularioComponent implements OnInit{
         console.error('Error al obtener el usuario:', error);
       }
     });
+
     this.userService.getListaSaques().subscribe({
       next: data => {
         this.saques = data.data;
+        console.log('Saques:', this.saques);
       },
       error: error => {
         console.error('Error al obtener los saques:', error);
@@ -69,6 +78,7 @@ export class FormularioComponent implements OnInit{
   }
 
   showAllAlumnos() {
+    console.log('los alumnos', this.users);
     this.filteredAlumnos = this.users; // Mostrar todos los alumnos al enfocar
     this.showDropdown = true; // Mostrar el dropdown
   }
@@ -99,28 +109,39 @@ export class FormularioComponent implements OnInit{
 
   onSubmit() {
     this.submitted = true;
+
     if (this.formData.invalid) {
-      console.error('Todos los campos son obligatorios y deben ser números válidos mayores que cero.');
+      console.error('Todos los campos son obligatorios y deben ser números válidos.');
       return;
     }
 
     const resultData: Omit<DatumResultados, 'id' | 'created_at' | 'updated_at'> = {
       user_id: this.formData.value.user_id,
-      saque_id: this.formData.value.saque_id,
+      saque_id: Number(this.formData.value.saque_id),
       velocidad: this.formData.value.velocidad,
       punteria: this.formData.value.punteria
     };
 
     this.userService.createResultados(resultData).subscribe({
       next: data => {
+        console.log('Resultados creados:', data);
+        this.showConfirmation = true;
+
+        this.errorMessage = '';
         this.formData.reset();
         this.searchText = '';
         this.submitted = false;
+        setTimeout(() => {
+          this.showConfirmation = false;
+        }, 3000);
       },
       error: error => {
         console.error('Error al crear los resultados:', error);
+        this.errorMessage = error.error.message || 'Ocurrió un error al crear los resultados.';
+        this.successMessage = '';
       }
     });
 
+    console.log('Formulario enviado:', resultData);
   }
 }

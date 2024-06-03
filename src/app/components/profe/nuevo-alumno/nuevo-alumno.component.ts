@@ -18,15 +18,14 @@ export class NuevoAlumnoComponent implements OnInit{
   searchText: string = '';
   filteredAlumnos: todaListaAlumnos[] = [];
   showDropdown: boolean = false;
+  showConfirmation: boolean = false;
+  errorMessage: string = '';
 
   users: todaListaAlumnos[] = [];
   user?: Data;
-
   selectedAlumno?: todaListaAlumnos;
 
-  constructor(
-    private userService: UserService,
-  ) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getUser().subscribe({
@@ -34,18 +33,17 @@ export class NuevoAlumnoComponent implements OnInit{
         this.user = data.data;
         console.log('Usuario:', this.user);
 
-          this.userService.getAlumnosList().subscribe({
-            next: data => {
-              this.users = data.data;
-              console.log('Alumnos:', this.users);
-              this.filteredAlumnos = this.users; // Inicialmente mostrar todos los alumnos
-              console.log('Alumnos filtrados:', this.filteredAlumnos);
-            },
-            error: error => {
-              console.error('Error al obtener los alumnos:', error);
-            }
-          });
-        
+        this.userService.getAlumnosList().subscribe({
+          next: data => {
+            this.users = data.data;
+            console.log('Alumnos:', this.users);
+            this.filteredAlumnos = this.users; // Inicialmente mostrar todos los alumnos
+            console.log('Alumnos filtrados:', this.filteredAlumnos);
+          },
+          error: error => {
+            console.error('Error al obtener los alumnos:', error);
+          }
+        });
       },
       error: error => {
         console.error('Error al obtener el usuario:', error);
@@ -88,7 +86,7 @@ export class NuevoAlumnoComponent implements OnInit{
       return;
     }
 
-    const connectionData:Omit<relacion, 'relacion_id'> = {
+    const connectionData: Omit<relacion, 'relacion_id'> = {
       alumno_id: this.selectedAlumno.id,
       teacher_id: this.user['id_user'],
       estado_relacion: 0
@@ -97,9 +95,15 @@ export class NuevoAlumnoComponent implements OnInit{
     this.userService.createRelacionProfesorAlumno(connectionData).subscribe({
       next: data => {
         console.log('Conexión creada:', data);
+        this.showConfirmation = true;
+        this.errorMessage = '';
+        setTimeout(() => {
+          this.showConfirmation = false;
+        }, 3000);
       },
       error: error => {
         console.error('Error al crear la conexión:', error);
+        this.errorMessage = error.error.message || 'Ocurrió un error al crear la conexión.';
       }
     });
   }
