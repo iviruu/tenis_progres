@@ -1,6 +1,6 @@
 [build]
   publish = "dist/tenis_progres"
-  command = "npm install --force && ng build --configuration production"
+  command = "npm install --force && npm run build"
 
 [build.environment]
-  NODE_VERSION = "16.14.0"  # Asegúrate de usar una versión compatible de Node.js
+  NODE_VERSION = "16.14.0"
