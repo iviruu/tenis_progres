@@ -50,7 +50,9 @@ cd tenis_progres
 ```bash
 npm install
 ```
+4. Aqui te dejo git de backend:
 
+https://github.com/iviruu/back.git
 
 
 ## Ejecución ▶️
