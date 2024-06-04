@@ -46,7 +46,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputPath": "dist/tenis_progres/browser",
+              "outputPath": "dist/tenis_progres",
               "budgets": [
                 {
                   "type": "initial",
