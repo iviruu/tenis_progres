@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.css'
 })
