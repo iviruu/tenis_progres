@@ -1,27 +1,90 @@
-# TenisProgres
+# Tenis Progres - Frontend.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+Este es el frontend de la aplicación Tenis Progres, una plataforma para gestionar y visualizar el progreso en el entrenamiento de tenis. La aplicación está construida con Angular y está desplegada en Netlify. 
 
-## Development server
+## Descripción 📄
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Tenis Progres permite a los entrenadores gestionar sus alumnos, registrar y visualizar resultados de los entrenamientos y manejar las invitaciones pendientes de los alumnos. Los alumnos pueden ver su perfil, resultados.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Características ✨
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Registro y autenticación de usuarios**: Permite a los usuarios registrarse y autenticarse.
+- **Gestión de perfiles**: Los usuarios pueden ver y actualizar su perfil.
+- **Gestión de resultados:**: Los entrenadores pueden registrar y ver los resultados de los entrenamientos.
+- **Gestión de invitaciones**: Los entrenadores pueden enviar invitaciones a los alumnos y manejar las pendientes.
+- **nterfaz amigable y responsiva**: Diseñada para ser accesible desde dispositivos móviles y de escritorio.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tecnologías Utilizadas 💻
 
-## Running end-to-end tests
+- TypeScript
+- HTML5
+- CSS 
+- [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+- [Chart.js](https://www.chartjs.org/)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Requisitos 📋
 
-## Further help
+- Node.js y npm instalados en tu sistema. Puedes descargarlos desde [nodejs.org](https://nodejs.org/).
+- Angular CLI instalado globalmente. Puedes instalarlo con el siguiente comando:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm install -g @angular/cli
+```
+
+## Instalación 🛠️
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/iviruu/tenis_progres.git
+```
+
+2. Ingresa al directorio del proyecto:
+```bash
+cd tenis_progres
+```
+
+3. Instala las dependencias:
+```bash
+npm install
+```
+
+
+
+## Ejecución ▶️
+Ejecuta la aplicación con el siguiente comando en terminal de front( en terminal con cd front):
+
+```bash
+ng serve -o
+```
+## Despliegue ✨
+
+El frontend está desplegado en Netlify. Puedes acceder a la aplicación en el siguiente enlace:
+
+[Tenis Progres en Netlify](https://main--tenis-progress.netlify.app/home)
+
+por ahora no esta implementado el backend, por lo que no se podra acceder a la aplicacion.
+
+
+## Uso 🚀
+
+- Registro y autenticación: Regístrate e inicia sesión para acceder a las funcionalidades de la aplicación.
+- Gestión de perfiles: Actualiza tu perfil con tu información personal.
+- Resultados de entrenamiento: Registra y visualiza los resultados de los entrenamientos de tus alumnos.
+- Invitaciones: Envía y gestiona invitaciones pendientes a los alumnos.
+
+## Contacto 📧
+Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contactarme directamente a través de mi email.
+ivan.kok.ru@gmail.com 
+o linkedin: https://www.linkedin.com/in/ivan-kokin-a13aab158/
+
+
+
+
+
+
+
+
+
