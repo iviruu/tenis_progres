@@ -1,6 +1,8 @@
 [build]
-  publish = "dist/tenis_progres"
-  command = "npm install --force && npm run build"
+  command = "ng build --configuration=production"
+  publish = "dist/tenis_progres/browser"
 
-[build.environment]
-  NODE_VERSION = "16.14.0"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
