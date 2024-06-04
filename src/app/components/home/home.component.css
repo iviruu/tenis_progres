@@ -9,7 +9,10 @@
     position: relative;
     z-index: 1;
 }
+.click{
+    cursor: pointer;
 
+}
 
 .font-bebas-neue-300 {
   font-family: 'Bebas Neue', sans-serif;

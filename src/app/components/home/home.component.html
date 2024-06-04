@@ -8,15 +8,15 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto"> 
                     @if (roles == '2'){
-                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500" routerLink="/profe">Mi Perfil</a></li>
-                    <li class="nav-item " (click)="logout()"><a class="nav-link text_yelow font-helvetica-500" >Salir</a></li>
+                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500 click" routerLink="/profe">Mi Perfil</a></li>
+                    <li class="nav-item " (click)="logout()"><a class="nav-link text_yelow font-helvetica-500 click" >Salir</a></li>
                     }
                     @if (roles == '1'){
-                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500" routerLink="/alumno">Mi Perfil</a></li>
-                    <li class="nav-item " (click)="logout()"><a class="nav-link text_yelow font-helvetica-500">Salir</a></li>
+                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500 click" routerLink="/alumno">Mi Perfil</a></li>
+                    <li class="nav-item " (click)="logout()"><a class="nav-link text_yelow font-helvetica-500 click">Salir</a></li>
                     } @else if (roles == null || roles == undefined){
-                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500" href="register">Registrarse</a></li>
-                    <li class="nav-item "><a class="nav-link text_yelow font-helvetica-500" href="login">Entrar</a></li>
+                    <li class="nav-item "><a class="nav-link text_white font-helvetica-500 click" href="register">Registrarse</a></li>
+                    <li class="nav-item "><a class="nav-link text_yelow font-helvetica-500 click" href="login">Entrar</a></li>
                     }
                     </ul>
                 </div>
