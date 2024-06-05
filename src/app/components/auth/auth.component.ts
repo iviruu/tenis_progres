@@ -17,6 +17,8 @@ export class AuthComponent {
   form: FormGroup;
   enviar: boolean = false;
   roles: string= '';
+  backendError: string = '';
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -45,10 +47,16 @@ export class AuthComponent {
           }
         },
         error: err => {
-          console.log(err);
+          // Mostrar el mensaje de error del backend
+          if (err.status === 401) {
+            this.backendError = 'Email o contraseña incorrecta.';
+          } else {
+            this.backendError = 'Ocurrió un error. Por favor, inténtalo de nuevo.';
+          }
         }
       });
+    } else {
+      console.log('Formulario inválido');
     }
   }
-
 }

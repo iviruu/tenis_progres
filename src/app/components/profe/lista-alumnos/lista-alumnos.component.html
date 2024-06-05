@@ -24,10 +24,11 @@
         <td>{{ user.Alumno.name }}</td>
         <td>{{ user.Alumno.surname }}</td>
         <td>
-          <button class="btn bg_dark text_yelow btn-sm font-helvetica-500 me-2" (click)="modifyUser(user)">Ver perfil</button>
-          <button class="btn bg_yelow text_white btn-sm font-arial-600" (click)="deleteUser(user)">Eliminar</button>
+          <button class="btn bg_dark text_yelow btn-sm font-helvetica-500 me-2" (click)="openModal(user.Alumno)">Ver perfil</button>
+          <button class="btn bg_yelow text_white btn-sm font-arial-600" (click)="deleteUser(user.relacion_id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <app-ver-perfil-modal [alumno]="selectedAlumno" [isVisible]="isModalVisible" (closeModal)="closeModal()"></app-ver-perfil-modal>
 </div>

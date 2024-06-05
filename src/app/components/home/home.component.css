@@ -55,11 +55,11 @@ p{
 
 .vacio{
     height: 10vh;
-    width: 100%;
+
 }
 .vacio2{
     height: 40vh;
-    width: 100%;
+
 }
 
 .apartado {
@@ -71,7 +71,7 @@ p{
 .container-scroll {
     overflow-y: auto; /* Permite el scroll interno */
     height: 100vh; /* Asegura que ocupa toda la altura del viewport */
-
+    overflow-x: hidden;
 }
 .info{
   background-color: rgb(239,237,237);
@@ -122,7 +122,7 @@ p{
 .masthead-content .masthead-subheading {
   font-size: 2rem;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .img-fluid{
     width: 15rem;
     height:15rem;
@@ -130,6 +130,9 @@ p{
  .info{
     text-align: center;
  }
+ .click{
+  color: white;
+}
 }
 @media (min-width: 992px) {
   .texto-final{

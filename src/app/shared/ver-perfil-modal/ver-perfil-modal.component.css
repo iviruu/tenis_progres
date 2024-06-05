@@ -1,0 +1,92 @@
+.modal.show {
+    display: block;
+  }
+  
+  .modal .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  
+  .modal .modal-content {
+    padding: 20px;
+    border: 2px solid #e4dddd;
+    box-shadow: 0 0 10px rgba(189, 185, 185, 0.7);
+  }
+  
+  .modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E1BE1D;
+  }
+  
+  .modal .modal-body {
+    padding: 20px 0;
+  }
+  
+  .modal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #E1BE1D;
+  }
+  .img-fluid{
+    width: 17rem;
+    height:17rem;
+  }
+  .font-bebas-neue-300 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-bebas-neue-600 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 600;
+  }
+  
+  .font-helvetica-300 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-helvetica-500 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+  
+  .font-helvetica-700 {
+    font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 700;
+  }
+  .bg_dark{
+    background-color: #000000;
+  }
+  .bg_gray{
+  background-color: #EFEDED;
+  }
+  .bg_yelow{
+  background-color: #E1BE1D;
+  }
+  .bg_white{
+  background-color: #ffffff;
+  }
+  .text_white{
+  color: #ffffff;
+  }
+  .text_dark{
+  color: #000000;
+  }
+  .text_yelow{
+  color: #E1BE1D;
+  }
+  p{
+  font-family: 'Helvetica', 'Arial', 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+  .font-arial-600{
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  }
+  .close{
+    cursor: pointer;
+}
+  

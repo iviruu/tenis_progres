@@ -6,6 +6,7 @@ export interface ListaAlumnos {
 
 export interface DatumListaAlumnos {
     alumno_id:       number;
+    relacion_id:     number;
     teacher_id:      number;
     estado_relacion: number;
     created_at:      Date;
@@ -16,4 +17,6 @@ export interface DatumListaAlumnos {
 export interface Alumno {
     name:    string;
     surname: null | string;
+    photo:   null | string;
+    id_user: number;
 }

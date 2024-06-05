@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../services/user.service';
 import { Alumno, DatumListaAlumnos } from '../../../interface/ListaAlumnos';
+import { VerPerfilModalComponent } from '../../../shared/ver-perfil-modal/ver-perfil-modal.component';
 
 type SortableKeys = 'name' | 'surname';
 
 @Component({
   selector: 'app-lista-alumnos',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,VerPerfilModalComponent],
   templateUrl: './lista-alumnos.component.html',
   styleUrl: './lista-alumnos.component.css'
 })
@@ -21,6 +22,8 @@ export class ListaAlumnosComponent implements OnInit{
   searchText: string = '';
   sortKey: SortableKeys = 'name';
   sortDirection: boolean = true; // true para ascendente, false para descendente
+  selectedAlumno?: Alumno;
+  isModalVisible: boolean = false;
 
 
   constructor(
@@ -28,26 +31,28 @@ export class ListaAlumnosComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe({
-      next: data => {
-        this.user = data.data;
-        if (this.user) {
-          this.userService.getAlumnosByProfesor(this.user.id_user).subscribe({
-            next: data => {
-              this.users = data.data;
-            },
-            error: error => {
-              console.error('Error al obtener los alumnos:', error);
-            }
-          });
-        }
-      },
-      error: error => {
-        console.error('Error al obtener el usuario:', error);
-      }
-    });
+    this.listaAlumnos();
   }
-
+listaAlumnos(){
+  this.userService.getUser().subscribe({
+    next: data => {
+      this.user = data.data;
+      if (this.user) {
+        this.userService.getAlumnosByProfesor(this.user.id_user).subscribe({
+          next: data => {
+            this.users = data.data;
+          },
+          error: error => {
+            console.error('Error al obtener los alumnos:', error);
+          }
+        });
+      }
+    },
+    error: error => {
+      console.error('Error al obtener el usuario:', error);
+    }
+  });
+}
 
   filteredUsers() {
     if (!this.users) {
@@ -89,13 +94,24 @@ export class ListaAlumnosComponent implements OnInit{
     }
   }
 
-  modifyUser(user: DatumListaAlumnos) {
-    // Lógica para modificar usuario
+  openModal(alumno: Alumno) {
+    this.selectedAlumno = alumno;
+    this.isModalVisible = true;
+  }
+  closeModal() {
+    this.isModalVisible = false;
+    this.selectedAlumno = undefined;
   }
 
-  deleteUser(user: DatumListaAlumnos) {
-    // Lógica para borrar usuario
-    this.users = this.users.filter(u => u !== user);
+  deleteUser(id: number) {
+    this.userService.deleteRelacion(id).subscribe({
+      next: data => {
+        this.listaAlumnos();
+      },
+      error: error => {
+        console.error('Error al eliminar el alumno:', error);
+      }
+    });
   }
 
 
