@@ -13,11 +13,39 @@
             <div class="col-3 text-center"><p class="font-bebas-neue-600 text_dark">Nombre:</p></div>
             <div class="col-7 col-sm-3 text-center"> <p class="font-helvetica-500 text_dark">{{ alumno?.name }} {{ alumno?.surname }}</p>
             </div>
-        </div>
+              <div class="row" *ngIf="showResults">
+                <div class="mb-3">
+                  <label for="saque" class="form-label">Selecciona Saque</label>
+                  <select id="saque" class="form-select" [(ngModel)]="selectedSaque_id" (change)="filterResultados()">
+                    <option *ngFor="let saque of saques" [value]="saque.id_saque">{{ saque.type_saque }}</option>
+                  </select>
+                  <div *ngIf="filteredResultados.length > 0">
+                    <h5>Resultados:</h5>
+                    <ul class="list-group" *ngFor="let resultado of filteredResultados">
+                      <li class="list-group-item" >
+                       <p> Velocidad: {{ resultado.velocidad }}, Puntería: {{ resultado.punteria }}, Fecha: {{ resultado.created_at | date:'shortDate' }}</p>
+                      </li>
+                    </ul>
+                    <button class="btn bg_yelow text_white font-arial-600 btn-sm float-end mt-2" (click)="openModal()">Ver Gráfico</button>
+                  </div>
+                </div>
+                <app-chards [resultados]="filteredResultados" [chartType]="selectedChartType"></app-chards>
+              
+              <div class="mb-3 d-flex gap-3 mt-2">
+                <label class="form-label font-helvetica-500 text_dark">Tipo de Gráfico:</label>
+                <div>
+                  <input type="radio" id="bar" name="chartType" value="bar"  [(ngModel)]="selectedChartType" checked> Barras
+                </div>
+                <div>
+                  <input type="radio" id="line" name="chartType" value="line" [(ngModel)]="selectedChartType"> Líneas
+                </div>
+              </div>
+            </div>
+            </div>
         </div>
         <div class="modal-footer justify-content-center">
-
-          <button type="button"  class="btn bg_yelow font-arial-600 text_white text-center" >Ver Resultados</button>
+          <button *ngIf="showResults" type="button" class="btn bg_yelow font-arial-600 text_white text-center" (click)="closeResults()">Cerrar Resultados</button>
+          <button *ngIf="!showResults" type="button"  class="btn bg_yelow font-arial-600 text_white text-center" (click)="verResultados()" >Ver Resultados</button>
         </div>
       </div>
     </div>
